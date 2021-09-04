@@ -1,6 +1,19 @@
 const inputEl = document.querySelector("#input-date");
 const submitBtn = document.querySelector("button");
 const outputEl = document.querySelector("#output");
+const loadingImg = document.querySelector("#loading-image");
+
+const showLoading = () => {
+  loadingImg.style.display = "block";
+};
+
+const hideLoading = () => {
+  loadingImg.style.display = "none";
+};
+
+const hideOutput = () => {
+  outputEl.textContent = "";
+};
 
 const displayOutput = (status, date, nearestPalindromeDate) => {
   switch (status) {
@@ -48,7 +61,9 @@ const getNearestPalindrome = (year) => {
   return getNearestPalindrome(year + 1);
 };
 
-const submitHandler = () => {
+const processInput = async () => {
+  hideLoading();
+
   const date = new Date(inputEl.value);
   date.setHours(0);
   date.setMinutes(0);
@@ -64,6 +79,14 @@ const submitHandler = () => {
     }
     displayOutput(false, date, nearestPalindromeDate);
   }
+};
+
+const submitHandler = () => {
+  hideOutput();
+  if (!inputEl.value) return;
+
+  showLoading();
+  setTimeout(processInput, 3000);
 };
 
 submitBtn.addEventListener("click", submitHandler);

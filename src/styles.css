@@ -65,6 +65,11 @@ a {
   margin: 0.5rem 1rem;
 }
 
+img {
+  display: none;
+  border-radius: 0.7rem;
+}
+
 /* Utilities */
 
 .flex-row-center {
