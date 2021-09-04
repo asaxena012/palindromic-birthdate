@@ -61,7 +61,7 @@ const getNearestPalindrome = (year) => {
   return getNearestPalindrome(year + 1);
 };
 
-const processInput = async () => {
+const processInput = () => {
   hideLoading();
 
   const date = new Date(inputEl.value);
